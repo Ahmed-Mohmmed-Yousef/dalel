@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dalel/core/database/cache/cache_helper.dart';
 import 'package:dalel/core/services/service_locator.dart';
 import 'package:dalel/core/utils/app_constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 // ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 
@@ -15,10 +16,14 @@ class SplashCubit extends Cubit<SplashState> {
       bool isOnBoardingAppeared = getIt<CacheHelper>()
               .getData(key: AppConstants.isOnBoardingAppeared) ??
           false;
-      if (isOnBoardingAppeared == true) {
+      if (isOnBoardingAppeared) {
         emit(SplashToOnboarding());
       } else {
-        emit(SplashToHome());
+        if (FirebaseAuth.instance.currentUser != null) {
+          emit(SplashToHome());
+        } else {
+          emit(SplashToSignUp());
+        }
       }
     });
   }

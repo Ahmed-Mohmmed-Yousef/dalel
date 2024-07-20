@@ -24,10 +24,13 @@ class _SplashViewState extends State<SplashView> {
     return BlocListener<SplashCubit, SplashState>(
       listener: (context, state) {
         if (state is SplashToHome) {
-          replacementNavigateTo(context, AppRouter.signUp);
+          replacementNavigateTo(context, AppRouter.home);
         }
         if (state is SplashToOnboarding) {
           replacementNavigateTo(context, AppRouter.onBoardingView);
+        }
+        if (state is SplashToSignUp) {
+          replacementNavigateTo(context, AppRouter.signIn);
         }
       },
       child: Scaffold(
