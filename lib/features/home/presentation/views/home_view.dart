@@ -28,6 +28,6 @@ class _HomeViewState extends State<HomeView> {
   void didTapOnLogoutBtn() async {
     await FirebaseAuth.instance.signOut();
     if (!mounted) return; // Check if widget is still mounted
-    replacementNavigateTo(context, AppRouter.signUp);
+    replacementNavigateTo(context, AppRouter.signIn);
   }
 }

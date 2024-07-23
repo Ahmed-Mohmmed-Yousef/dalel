@@ -2,12 +2,12 @@ abstract class AppStrings {
   //ToDo:All Strings
 
   static const String appName = "Dalel",
-  //!On Boarding Strings
+      //!On Boarding Strings
       skip = "Skip",
       next = "Next",
       createAccount = "Create Account",
       loginNow = "Login Now",
-  //!Auth Strings
+      //!Auth Strings
       welcome = "Welcome!",
       welcomeBack = "Welcome Back!",
       fristName = "First Name",
@@ -21,14 +21,14 @@ abstract class AppStrings {
       alreadyHaveAnAccount = "Already have an account ? ",
       dontHaveAnAccount = "Don’t have an account ? ",
       forgotPassword = "Forgot Password ?",
-  //!Home Strings
+      //!Home Strings
       recommendations = "Recommendations",
       about = "About",
       wars = "Wars",
-  //!Search Strings
+      //!Search Strings
       searchDeepIntoTheHistory = "Search deep into the history",
       recent = "Recent",
-  //!Profile Strings
+      //!Profile Strings
       profile = "Profile",
       account = "Account",
       editProfile = "Edit Profile",
@@ -38,17 +38,17 @@ abstract class AppStrings {
       security = "Security",
       privacyPolicy = "Privacy Policy",
       logOut = "Log Out",
-  //!Bazar
+      //!Bazar
       bazar = "Bazar",
       historicalPeriods = "Historical periods",
       historicalCharacters = "Historical Characters",
       historyBooks = "History Books",
       historicalSouvenirs = "Historical Souvenirs",
-  //!Cart
+      //!Cart
       myCart = "My Cart",
       totalPayment = "Total Payment",
       checkoutNow = "Checkout Now",
-  //!Payment Strings
+      //!Payment Strings
       checkoutScreen = "Checkout Screen",
       deliveryAddress = "Delivery Address",
       change = "Change",
@@ -60,14 +60,19 @@ abstract class AppStrings {
       thankYou =
           "Thank you for your order here and your package will be sent to your address very quickly and fast good product",
       backToHome = "Back To Home",
-  //!Forgot password
+      //!Forgot password
       forgotPasswordPage = "Forgot Password",
+      forgotPasswordDescription =
+          "Enter your registered email below to receive password reset instruction.",
       sendResetPasswordLink = "Send Reset Passwrod Link",
+      sendVerificationCode = "Send Verification Code",
       verificationNow = "Verification Now",
       resendCode = "Resend Code",
       verifyAccount = "Verify Account",
       enter4DigitCodeWeHaveSentTo = "Enter 4 digit code we have sent to ",
       haventReceivedVerificationCode = "Haven’t received verification code?";
+
+  //
 }
 
 abstract class FireBaseStrings {

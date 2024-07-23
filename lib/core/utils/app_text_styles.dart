@@ -50,6 +50,14 @@ abstract class AppTextStyles {
     color: AppColors.deepBrown,
     fontFamily: "Poppins",
   );
+
+  static final poppins400style14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.deepBrown,
+    fontFamily: "Poppins",
+  );
+
   static const pacifico700style32 = TextStyle(
     fontSize: 42,
     fontWeight: FontWeight.bold,

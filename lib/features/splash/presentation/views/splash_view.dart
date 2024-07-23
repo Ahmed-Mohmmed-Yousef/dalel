@@ -30,6 +30,10 @@ class _SplashViewState extends State<SplashView> {
           replacementNavigateTo(context, AppRouter.onBoardingView);
         }
         if (state is SplashToSignUp) {
+          replacementNavigateTo(context, AppRouter.signUp);
+        }
+
+        if (state is SplashToSignIn) {
           replacementNavigateTo(context, AppRouter.signIn);
         }
       },

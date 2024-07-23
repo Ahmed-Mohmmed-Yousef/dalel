@@ -19,10 +19,11 @@ class SplashCubit extends Cubit<SplashState> {
       if (isOnBoardingAppeared) {
         emit(SplashToOnboarding());
       } else {
-        if (FirebaseAuth.instance.currentUser != null) {
+        if (FirebaseAuth.instance.currentUser != null &&
+            FirebaseAuth.instance.currentUser?.emailVerified == true) {
           emit(SplashToHome());
         } else {
-          emit(SplashToSignUp());
+          emit(SplashToSignIn());
         }
       }
     });

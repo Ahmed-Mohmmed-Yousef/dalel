@@ -9,4 +9,6 @@ final class SplashToHome extends SplashState {}
 
 final class SplashToSignUp extends SplashState {}
 
+final class SplashToSignIn extends SplashState {}
+
 final class SplashToOnboarding extends SplashState {}

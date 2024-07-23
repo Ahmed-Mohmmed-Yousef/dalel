@@ -18,7 +18,7 @@ class CustomSignInForm extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignInSuccessState) {
-          showToast(msg: "Loged in successfully");
+          showToast(msg: "Welcome Back!");
           replacementNavigateTo(context, AppRouter.home);
         } else if (state is SignInFailureState) {
           showToast(msg: state.errorMsg);
@@ -52,7 +52,7 @@ class CustomSignInForm extends StatelessWidget {
               const SizedBox(height: 8),
               const ForgotPasswordTextWidget(),
               const SizedBox(height: 102),
-              state is SignupLoadingState
+              state is SignInLoadingState
                   ? CircularProgressIndicator(color: AppColors.primaryColor)
                   : CustomBtn(
                       title: AppStrings.signIn,
