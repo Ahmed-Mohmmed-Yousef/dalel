@@ -19,7 +19,7 @@ class CustomSignInForm extends StatelessWidget {
       listener: (context, state) {
         if (state is SignInSuccessState) {
           showToast(msg: "Welcome Back!");
-          replacementNavigateTo(context, AppRouter.home);
+          replacementNavigateTo(context, AppRouter.homeNavBar);
         } else if (state is SignInFailureState) {
           showToast(msg: state.errorMsg);
         }

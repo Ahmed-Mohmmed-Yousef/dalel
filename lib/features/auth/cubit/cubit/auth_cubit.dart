@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dalel/core/functions/custom_toast.dart';
 import 'package:dalel/features/auth/cubit/cubit/auth_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -24,21 +25,25 @@ class AuthCubit extends Cubit<AuthState> {
         email: emailAddress!,
         password: password!,
       );
-      sendEmailVerification();
+      await addUserProfile();
+      await sendEmailVerification();
       emit(SignupSuccessState());
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        emit(
-            SignupFailureState(errorMsg: "The password provided is too weak."));
-      } else if (e.code == 'email-already-in-use') {
-        emit(SignupFailureState(
-            errorMsg: 'The account already exists for that email.'));
-      } else if (e.code == "invalid-email") {
-        emit(SignupFailureState(errorMsg: "The email address is invalid."));
-      } else {
-        emit(SignupFailureState(errorMsg: e.toString()));
-      }
+      _signUpHandleExceptions(e);
     } catch (e) {
+      emit(SignupFailureState(errorMsg: e.toString()));
+    }
+  }
+
+  void _signUpHandleExceptions(FirebaseAuthException e) {
+    if (e.code == 'weak-password') {
+      emit(SignupFailureState(errorMsg: "The password provided is too weak."));
+    } else if (e.code == 'email-already-in-use') {
+      emit(SignupFailureState(
+          errorMsg: 'The account already exists for that email.'));
+    } else if (e.code == "invalid-email") {
+      emit(SignupFailureState(errorMsg: "The email address is invalid."));
+    } else {
       emit(SignupFailureState(errorMsg: e.toString()));
     }
   }
@@ -69,7 +74,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  void sendEmailVerification() async {
+  Future<void> sendEmailVerification() async {
     final currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser == null) return;
     await currentUser.sendEmailVerification();
@@ -116,6 +121,15 @@ class AuthCubit extends Cubit<AuthState> {
     if (forgotFormKey.currentState!.validate()) {
       resetPasswordWithLink();
     }
+  }
+
+  Future<void> addUserProfile() async {
+    CollectionReference users = FirebaseFirestore.instance.collection("users");
+    await users.add({
+      "email": emailAddress,
+      "first_name": firstName,
+      "last_name": lastName,
+    });
   }
 
   void obscureTextUpdate() {
